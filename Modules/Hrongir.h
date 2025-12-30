@@ -1,7 +1,7 @@
-#include "DSP.h"
-#include "FrequencyShifter.h"
-#include "XFade.h"
-#include "daisysp.h"
+#include "../Common/DSP.h"
+#include "../Common/FrequencyShifter.h"
+#include "../Common/XFade.h"
+#include "../Vendor/DaisySP/Source/daisysp.h"
 
 namespace planetbosch {
 

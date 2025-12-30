@@ -1,8 +1,6 @@
-#include "DSP.h"
-#include "Hrongir.h"
-#include "daisy_versio.h"
-#include "daisysp.h"
-#include <string>
+#include "../../Common/DSP.h"
+#include "../../Modules/Hrongir.h"
+#include "../../Vendor/libDaisy/src/daisy_versio.h"
 
 daisy::DaisyVersio hw;
 
