@@ -16,7 +16,6 @@ void callback(
 ) {
   hw.ProcessAnalogControls();
 
-  float base_pitch = 
   params->gain_1 = 0.f;
   params->gain_2 = 0.f;
   params->gain_3 = 0.f;
