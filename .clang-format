@@ -7,3 +7,4 @@ AlignConsecutiveDeclarations: true
 BinPackArguments: false
 BinPackParameters: false
 BreakBeforeTernaryOperators: true
+ColumnLimit: 80

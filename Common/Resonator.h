@@ -46,13 +46,13 @@ public:
 
   inline void SetColor(float color) {
     float color_frequency =
-        powf(100.f, 2.f * daisysp::fclamp(color, 0.f, 1.f) - 1.f);
-    // 200Hz (-1) to 20,000Hz (0) 2,000,000Hz (1)
+        powf(1000.f, 2.f * daisysp::fclamp(color, 0.f, 1.f) - 1.f);
+    // 20Hz (-1) to 20,000Hz (0) 20,000,000Hz (1)
     float low_pass_frequency =
-        daisysp::fclamp(20000.f * color_frequency, 20.f, 20000.f);
-    // 0.2Hz (-1) to 20Hz (0) to 2,000Hz (1)
+        daisysp::fclamp(20000.f * color_frequency, 20.f, sample_rate_ / 3.f);
+    // 0.002Hz (-1) to 2Hz (0) to 2,000Hz (1)
     float high_pass_frequency =
-        daisysp::fclamp(20.f * color_frequency, 20.f, 20000.f);
+        daisysp::fclamp(2.f * color_frequency, 20.f, sample_rate_ / 3.f);
     low_pass_filter_.SetFreq(low_pass_frequency);
     high_pass_filter_.SetFreq(high_pass_frequency);
   }

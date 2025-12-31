@@ -20,7 +20,7 @@ void callback(
   params->gain_2 = 0.f;
   params->gain_3 = 0.f;
   params->gain_4 = 0.f;
-  params->pitch_1 = round(daisysp::fmap(hw.GetKnobValue(daisy::DaisyVersio::KNOB_3), 36.f, 84.f));
+  params->pitch_1 = round(daisysp::fmap(hw.GetKnobValue(daisy::DaisyVersio::KNOB_3), 24.f, 72.f));
   params->pitch_2 = params->pitch_1 + round(daisysp::fmap(hw.GetKnobValue(daisy::DaisyVersio::KNOB_1), -12.f, 12.f));
   params->pitch_3 = params->pitch_1 + round(daisysp::fmap(hw.GetKnobValue(daisy::DaisyVersio::KNOB_2), -12.f, 12.f));
   params->pitch_4 = params->pitch_1 + round(daisysp::fmap(hw.GetKnobValue(daisy::DaisyVersio::KNOB_5), -12.f, 12.f));
