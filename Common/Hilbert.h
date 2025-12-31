@@ -12,8 +12,20 @@ public:
 
   void Init(float sample_rate) {
     /* pole values taken from Bernie Hutchins, "Musical Engineer's Handbook" */
-    double poles[12] = {0.3609, 2.7412, 11.1573, 44.7581, 179.6242, 798.4578,
-                        1.2524, 5.5671, 22.3423, 89.6271, 364.7914, 2770.1114};
+    double poles[12] = {
+        0.3609,
+        2.7412,
+        11.1573,
+        44.7581,
+        179.6242,
+        798.4578,
+        1.2524,
+        5.5671,
+        22.3423,
+        89.6271,
+        364.7914,
+        2770.1114,
+    };
     double polefreq, rc, alpha, beta;
     /* calculate coefficients for allpass filters, based on sampling rate */
     for (int j = 0; j < 12; j++) {
