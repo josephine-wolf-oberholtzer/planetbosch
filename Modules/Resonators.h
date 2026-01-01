@@ -42,9 +42,9 @@ public:
     float in_ = dc_block_.Process(in);
     float out = 0.f;
     for (int i = 0; i < RESONATOR_LAST; i++) {
-      out += resonators_[i].Process(in_) / 4.f;
+      out += resonators_[i].Process(in_);
     }
-    out = planetbosch::SoftClip(out);
+    out /= 4.f;
     return xfade_.Process(in_, out);
   }
 
@@ -56,7 +56,7 @@ public:
 
   void SetDecay(float decay) {
     for (int i = 0; i < RESONATOR_COUNT; i++) {
-      resonators_[i].SetDecay(decay);
+      resonators_[i].SetDecayTime(decay);
     }
   }
 
