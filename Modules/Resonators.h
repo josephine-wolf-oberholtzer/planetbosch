@@ -12,7 +12,7 @@ static int RESONATOR_LAST  = 4;
 
 typedef struct {
   float color;
-  float decay;
+  float decay_time;
   float gain_1;
   float gain_2;
   float gain_3;
@@ -54,7 +54,7 @@ public:
     }
   }
 
-  void SetDecay(float decay) {
+  void SetDecayTime(float decay) {
     for (int i = 0; i < RESONATOR_COUNT; i++) {
       resonators_[i].SetDecayTime(decay);
     }
@@ -76,7 +76,7 @@ public:
 
   void Update(ResonatorsParams *params) {
     SetColor(params->color);
-    SetDecay(params->decay);
+    SetDecayTime(params->decay_time);
     SetGain(params->gain_1, 0);
     SetGain(params->gain_2, 1);
     SetGain(params->gain_3, 2);

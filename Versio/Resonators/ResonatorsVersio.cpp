@@ -25,7 +25,7 @@ void callback(
   params->pitch_3 = params->pitch_1 + round(daisysp::fmap(hw.GetKnobValue(daisy::DaisyVersio::KNOB_2), -12.f, 12.f));
   params->pitch_4 = params->pitch_1 + round(daisysp::fmap(hw.GetKnobValue(daisy::DaisyVersio::KNOB_5), -12.f, 12.f));
   params->color = hw.GetKnobValue(daisy::DaisyVersio::KNOB_6);
-  params->decay = hw.GetKnobValue(daisy::DaisyVersio::KNOB_4);
+  params->decay_time = powf(hw.GetKnobValue(daisy::DaisyVersio::KNOB_4), 2.f) * 10.f;
   params->mix = hw.GetKnobValue(daisy::DaisyVersio::KNOB_0);
 
   module.Update(params);

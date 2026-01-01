@@ -9,6 +9,8 @@
 
 namespace planetbosch {
 
+static float log001 = -6.9078f; // log .001
+
 class Resonator {
 public:
   Resonator() {}
@@ -29,9 +31,16 @@ public:
   float Process(float in) {
     amplitude_ = amplitude_lag_.Process(amplitude_target_);
     delay_time_ = delay_time_lag_.Process(delay_time_target_);
-    feedback_ = powf(decay_time_, 0.1f)  * 0.2999f + 0.7f;
+    //feedback_ = powf(decay_time_, 0.1f)  * 0.2999f + 0.7f;
+    // hold decay time constant regardless of delay time
+    feedback_ = log001 * delay_time_ / decay_time_;
+    if (feedback_ < -36.8413615) {
+      feedback_ = 0.f;
+    } else {
+      feedback_ = expf(feedback_);
+    }
     // Read the delay line
-    float delay_output = delay_line_.ReadHermite(delay_time_);
+    float delay_output = delay_line_.ReadHermite(delay_time_ * sample_rate_);
     // Average with previous delay output
     float filtered_output  = 0.5f * (delay_output + previous_delay_output_);
     previous_delay_output_ = delay_output;
@@ -68,11 +77,11 @@ public:
   }
 
   inline void SetDecayTime(float decay_time) {
-    decay_time_ = daisysp::fclamp(decay_time, 0.f, 1.f);
+    decay_time_ = decay_time;
   }
 
   inline void SetDelayTime(float delay_time) {
-    delay_time_target_ = delay_time * sample_rate_;
+    delay_time_target_ = delay_time;
   }
 
   inline void SetFrequency(float frequency) {
